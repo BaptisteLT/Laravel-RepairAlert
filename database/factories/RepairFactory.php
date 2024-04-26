@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Car;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -20,7 +21,8 @@ class RepairFactory extends Factory
             'name' => fake()->name(),
             'km_interval' => fake()->numberBetween(10000,100000),
             'month_time_interval' => fake()->numberBetween(3,24),
-            'is_notified' => fake()->boolean(80)
+            'is_notified' => fake()->boolean(80),
+            //'car_id' => Car::factory()->create()->id
         ];
     }
 }

@@ -12,9 +12,9 @@
 
 
     
-    <link rel="stylesheet" href="css/base/navbar.css">
-    <link rel="stylesheet" href="css/base/footer.css">
-    <link rel="stylesheet" href="css/base/base.css">
+    <link rel="stylesheet" href="/css/base/navbar.css">
+    <link rel="stylesheet" href="/css/base/footer.css">
+    <link rel="stylesheet" href="/css/base/base.css">
 </head>
     
 
@@ -40,5 +40,7 @@
         <!-- Your footer content here -->
         <p>&copy; {{ date('Y') }} Your App Name. All rights reserved.</p>
     </footer>
+
+    @yield('scripts')
 </body>
 </html>

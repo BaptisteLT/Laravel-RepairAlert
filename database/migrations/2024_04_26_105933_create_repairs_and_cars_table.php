@@ -23,8 +23,8 @@ return new class extends Migration
             $table->uuid();
             $table->timestamps();
             $table->string('name');
-            $table->integer('km_interval');
-            $table->float('month_time_interval');
+            $table->integer('km_interval')->nullable();
+            $table->float('month_time_interval')->nullable();
             $table->boolean('is_notified');
             $table->foreignId('car_id')->nullable(false)->constrained()->onDelete('cascade');
         });

@@ -16,7 +16,5 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::get(
-    '/repair-list',
-    [RepairController::class, 'showAndCreate']
-)->name('showAndCreate');
+Route::get('/repair-list/{uuid}',[RepairController::class, 'showAndCreate'])->name('showAndCreate');
+Route::post('/repair/store/{uuid}',[RepairController::class, 'storeRepair'])->name('storeRepair');

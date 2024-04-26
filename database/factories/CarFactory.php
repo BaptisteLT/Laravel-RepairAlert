@@ -19,7 +19,7 @@ class CarFactory extends Factory
     {
         return [
             'name' => fake()->name(),
-            'repairs' => Repair::factory()->count(5)
+            //'repairs' => Repair::factory()->count(5)
         ];
     }
 }
