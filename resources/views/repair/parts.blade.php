@@ -1,8 +1,12 @@
 @extends('base')
 
 @section('stylesheets')
+    
     <link rel="stylesheet" href="/css/repair/parts.css">
     <link rel="stylesheet" href="/css/repair/switch-btn.css">
+    <link rel="stylesheet" href="/css/repair/delete-btn.css">
+    <link rel="stylesheet" href="/css/repair/save-btn.css">
+    <link rel="stylesheet" href="/css/repair-common/common.css">
 @endsection
 
 @section('content')
@@ -20,9 +24,9 @@
     <div class="custom-container">
         
         <div class="repair-nav">
-            <a class="active" href="/repair-list">Opérations à effectuer</a>
+            <a class="active" href="/repair-list/{{ $car->uuid }}">Opérations à effectuer</a>
             <hr />
-            <a href="/">Travaux effectués</a>
+            <a href="/repair-done-list/{{ $car->uuid }}">Travaux effectués</a>
         </div>
 
         <div class="content-wrapper">
@@ -98,18 +102,18 @@
 
                 <tbody>
                     @foreach ($car->repairs as $repair)
-                        <tr>
+                        <tr id="repair-{{ $repair->uuid }}">
                             <th scope="row">{{ $repair->name }}</th>
                             <td>{{ $repair->km_interval }} km</td>
                            
                             <td>{{$repair->month_time_interval % 12 === 0 ? $repair->month_time_interval/12 : $repair->month_time_interval}} {{ ($repair->month_time_interval % 12 === 0) ? 'ans' : 'mois' }}</td>
                             <td>
                                 <label class="switch">
-                                    <input type="checkbox" {{$repair->is_notified ? "checked" : '' }}>
+                                    <input onClick="switchNotification('{{ $repair->uuid }}', '{{ csrf_token() }}')" type="checkbox" {{$repair->is_notified ? "checked" : '' }}>
                                     <span class="slider round"></span>
                                 </label>
                             </td>
-                            <td>Delete</td>
+                            <td onClick="deleteRepair('{{ $repair->uuid }}', '{{ csrf_token() }}')"><button class="delete-btn">Delete</button></td>
                         </tr>
                     @endforeach
                 </tbody>
@@ -121,5 +125,7 @@
 @endsection
 
 @section('scripts')
+    <script src="/js/repair/deleteRepair.js"></script>
     <script src="/js/repair/calculateDate.js"></script>
+    <script src="/js/repair/switchNotification.js"></script>
 @endsection

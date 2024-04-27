@@ -1,0 +1,16 @@
+
+.save-btn {
+    background: #7d62ff;
+    border-radius: 5px;
+    color: #ffffff;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+    border: 0;
+    font-size: 1rem;
+    cursor: pointer;
+}
+  
+.save-btn:hover {
+    background: #866eff;
+    text-decoration: none;
+}
