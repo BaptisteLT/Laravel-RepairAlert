@@ -65,3 +65,14 @@ legend{
     padding: 6px;
     margin: 0px;
 }
+
+
+th, td {
+    border: 1px solid #b9aaff;
+    text-align: center;
+    padding: 3px;
+}
+table{
+    width: 100%;
+    border-collapse: collapse;
+}

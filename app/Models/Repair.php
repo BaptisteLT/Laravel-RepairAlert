@@ -5,6 +5,7 @@ namespace App\Models;
 use Ramsey\Uuid\Uuid;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Repair extends Model
@@ -36,5 +37,25 @@ class Repair extends Model
     public function uniqueIds(): array
     {
         return ['uuid'];
+    }
+
+    
+    /**
+     * Get the repairDones for the repair.
+     */
+    public function repairDones(): HasMany
+    {
+        return $this->hasMany(RepairDone::class);
+    }
+
+    /**
+     * Trouve une opération
+     *
+     * @param [type] $uuid
+     * @return void
+     */
+    public static function findByUuid($uuid): Repair
+    {
+        return self::where('uuid', $uuid)->firstOrFail();
     }
 }

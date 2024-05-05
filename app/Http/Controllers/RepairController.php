@@ -14,7 +14,7 @@ class RepairController extends Controller
     public function showAndCreate(string $uuid): View
     {
         return view('repair.parts', [
-            'car' => Car::findWithRepair($uuid)
+            'car' => Car::findByUuidWithRepair($uuid)
         ]);
     }
 

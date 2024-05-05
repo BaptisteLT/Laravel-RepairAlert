@@ -5,6 +5,7 @@ namespace App\Models;
 use Ramsey\Uuid\Uuid;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -41,7 +42,9 @@ class Car extends Model
      */
     public function repairs(): HasMany
     {
-        return $this->hasMany(Repair::class);
+        return $this->hasMany(Repair::class)->with(['repairDones' => function(Builder $query){
+            $query->orderBy('kilometers', 'desc');
+        }]);
     }
 
     /**
@@ -50,7 +53,7 @@ class Car extends Model
      * @param [type] $uuid
      * @return void
      */
-    public static function findWithRepair($uuid)
+    public static function findByUuidWithRepair($uuid)
     {
         return self::with('repairs')->where('uuid', $uuid)->firstOrFail();
     }

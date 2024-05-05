@@ -11,16 +11,6 @@
 
 @section('content')
 
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
-
     <div class="custom-container">
         
         <div class="repair-nav">
@@ -86,7 +76,6 @@
 
         <div class="content-wrapper">
             <table>
-
                 <thead>
                     <tr>
                         <th colspan="5">Liste de vos pièces et opérations sur votre {{ $car->name }}</th>

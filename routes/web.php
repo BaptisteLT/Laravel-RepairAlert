@@ -25,3 +25,4 @@ Route::get('/repair/switch-notification/{uuid}',[RepairController::class, 'switc
 
 
 Route::get('/repair-done-list/{uuid}',[RepairDoneController::class, 'showAndCreate'])->name('showAndCreate');
+Route::post('/repair-done/store/{uuid}',[RepairDoneController::class, 'storeRepairDone'])->name('storeRepairDone');
